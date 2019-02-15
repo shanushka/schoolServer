@@ -1,15 +1,19 @@
 Create Pipenv
+	
 	Command: Pipenv install requirements
 
 To activate the environment
+	
 	pipenv shell
 
 To check all the packages that are installed
+	
 	pipenv graph
 
 The Migration Environment
 
 To create a migration environment
+	
 	alembic init migrations
 
 Where above, the init command was called to generate a migrations directory called alembic:
