@@ -1,16 +1,16 @@
 Create Pipenv
--Command: Pipenv install requirements
+	Command: Pipenv install requirements
 
 To activate the environment
--pipenv shell
+	pipenv shell
 
-To check all the packages that are installed 
--pipenv graph 
+To check all the packages that are installed
+	pipenv graph
 
 The Migration Environment
 
 To create a migration environment
--alembic init migrations
+	alembic init migrations
 
 Where above, the init command was called to generate a migrations directory called alembic:
 
@@ -25,8 +25,8 @@ Please edit configuration/connection/logging settings in
 
 Alembic also includes other environment templates. These can be listed out using the list_templates command:
 
-- alembic list_templates
+	alembic list_templates
 
-Create a Migration Script  
+Create a Migration Script
 
-- alembic revision -m "create account table"
+	alembic revision -m "create account table"
