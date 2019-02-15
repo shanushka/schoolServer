@@ -41,3 +41,13 @@ def update_student(student_id):
         return Response('', 200, mimetype='application/json')
     else:
         return Response(json.dumps(invalidObjectMessage), 401, mimetype='application/json')
+
+@controller.route('/class/<int:class_id>/student', methods=['GET'])
+def fetch_students_by_class_id(class_id):
+    return json_response(StudentService.fetch_students_by_class_id(class_id))
+
+@controller.route('/class/<int:class_id>/student/<int:student_id>', methods=['GET'])
+def fetch_students_id_by_class_id(class_id,student_id):
+    return json_response(StudentService.fetch_students_id_by_class_id(class_id,student_id))
+
+

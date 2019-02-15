@@ -46,3 +46,4 @@ def delete_class(class_id):
         return Response('deleted', 200, mimetype='application/json')
     else:
         return Response('Unable to perform delete operation', 401, mimetype='application/json')
+

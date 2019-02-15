@@ -25,6 +25,11 @@ def validClassObject(ClassObject):
         return True
     return False
 
+def validSubjectObject(SubjectObject):
+    if (
+            "name" in SubjectObject and "class_id" in SubjectObject):
+        return True
+    return False
 
 invalidObjectMessage = {
     "error": "Need a valid data"
