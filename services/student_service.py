@@ -6,20 +6,12 @@ class StudentService(BaseService):
     model = Student
 
     @classmethod
-    def fetch_by_id(cls, _student_id):
-        return Student.query.filter_by(student_id=_student_id).first()
-
-    @classmethod
     def create(cls, request_data):
         new_student = Student(name=request_data["name"], father_name=request_data["father_name"],
                               mother_name=request_data["mother_name"],
                               contact_number=request_data["contact_number"], class_id=request_data["class_id"])
         session.add(new_student)
         session.commit()
-
-    @classmethod
-    def delete(cls, _student_id):
-        Student.query.filter_by(student_id=_student_id).delete()
 
     @classmethod
     def update(cls, _student_id, _requested_date):

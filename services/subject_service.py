@@ -7,18 +7,9 @@ class SubjectService(BaseService):
     model = Subject
 
     @classmethod
-    def fetch_by_id(cls, _subject_id):
-        return Subject.query.filter_by(subject_id=_subject_id).first()
-
-    @classmethod
     def create(cls, request_data):
         new_subject = Subject(name=request_data["name"], class_id=request_data["class_id"])
         session.add(new_subject)
-        session.commit()
-
-    @classmethod
-    def delete(cls, _subject_id):
-        Subject.query.filter_by(subject_id=_subject_id).delete()
         session.commit()
 
     @classmethod
