@@ -3,7 +3,7 @@ from flask import request, Response
 
 from services import StudentService
 from utils.common import json_response
-from utils.test import validStudentObject, invalidObjectMessage
+from utils.validatepayload import validStudentObject, invalidObjectMessage
 from controller import api_blueprint as controller
 
 
@@ -22,7 +22,7 @@ def create_student():
     request_data = request.get_json()
     if (validStudentObject(request_data)):
         StudentService.create(request_data)
-        return Response('', 200, mimetype='application/json')
+        return Response(json.dumps(request_data), 200, mimetype='application/json')
     else:
         return Response(json.dumps(invalidObjectMessage), 401, mimetype='application/json')
 
@@ -38,7 +38,7 @@ def update_student(student_id):
     request_data = request.get_json()
     if (validStudentObject(request_data)):
         StudentService.update(student_id,request_data)
-        return Response('', 200, mimetype='application/json')
+        return Response(json.dumps(request_data), 200, mimetype='application/json')
     else:
         return Response(json.dumps(invalidObjectMessage), 401, mimetype='application/json')
 

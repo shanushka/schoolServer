@@ -4,7 +4,7 @@ from flask import request, Response
 from services import SubjectService
 from utils.common import json_response
 from controller import api_blueprint as controller
-from utils.test import validSubjectObject, invalidObjectMessage
+from utils.validatepayload import validSubjectObject, invalidObjectMessage
 
 
 @controller.route('/subject', methods=['GET'])
@@ -21,7 +21,7 @@ def create_subject():
     request_data = request.get_json()
     if (validSubjectObject(request_data)):
         SubjectService.create(request_data)
-        return Response('', 200, mimetype='application/json')
+        return Response(json.dumps(request_data), 200, mimetype='application/json')
     else:
         return Response(json.dumps(invalidObjectMessage), 401, mimetype='application/json')
 
@@ -37,7 +37,7 @@ def update_subject(subject_id):
     request_data = request.get_json()
     if (validSubjectObject(request_data)):
         SubjectService.update(subject_id,request_data)
-        return Response('', 200, mimetype='application/json')
+        return Response(json.dumps(request_data), 200, mimetype='application/json')
     else:
         return Response(json.dumps(invalidObjectMessage), 401, mimetype='application/json')
 

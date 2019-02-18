@@ -9,10 +9,8 @@ from utils.custom_json_encoder import CustomJSONEncoder
 def createApp():
     app = Flask(__name__)
     # takes the environment from system.env file
-    if os.environ.get('ENV') == 'testing':
-        #sets ths appication configuration
-        app.config.from_object(config.TestConfig)
-    elif os.environ.get('ENV') == 'production':
+
+    if os.environ.get('ENV') == 'production':
         app.config.from_object(config.ProductionConfig)
     else :
         app.config.from_object(config.DevelopmentConfig)

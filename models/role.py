@@ -1,4 +1,4 @@
-from models.base_model import db, BaseModel, DbModel
+from models.base_model import db, BaseModel, DbModel,session
 
 
 class Role(BaseModel, DbModel):
@@ -14,3 +14,9 @@ class Role(BaseModel, DbModel):
             'role_id': self.role_id,
             'type': self.type
         }
+
+    @classmethod
+    def create(cls, request_data):
+        new_role = Role(type=request_data["type"])
+        session.add(new_role)
+        session.commit()
