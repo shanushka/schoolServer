@@ -23,5 +23,13 @@ class UserService(BaseService):
         session.add(user)
         session.commit()
 
+    @classmethod
+    def IsUserMatched(cls,email,password):
+        user = Users.query.filter_by(email=email).filter_by(password=password).first()
+        if user is None:
+            return False
+        return True
+
+
 
 
