@@ -1,6 +1,7 @@
 from models import Users
 from flask import session,jsonify
 from functools import wraps
+from services.users_service import UserService
 from enums import RoleEnum
 
 
@@ -11,12 +12,7 @@ class Login:
         email = requested_data['email']
         password = requested_data["password"]
 
-        user = Users.query.filter_by(email=email).filter_by(password=password).first()
-
-        if user is None:
-             return False
-
-        return True
+        return UserService.IsUserMatched(email,password)
 
     @classmethod
     def authenticate(cls, roles=None):
