@@ -15,8 +15,6 @@ class BaseService:
     def delete(cls,id):
         return cls.model.delete(id)
 
-<<<<<<< HEAD
-=======
     @classmethod
     def create(cls,requested_data):
         cls.model.create(requested_data)
@@ -25,4 +23,3 @@ class BaseService:
     def update(cls,id,requested_data):
         cls.model.update(id,requested_data)
 
->>>>>>> initial

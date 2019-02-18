@@ -17,7 +17,7 @@ class SchoolClass(BaseModel,DbModel):
 
     @classmethod
     def create(cls, requested_data):
-        new_class = SchoolClass(grade=requested_data['grade'], section=requested_data['section'])
+        new_class = SchoolClass(grade=['grade'], section=requested_data['section'])
         session.add(new_class)
         session.commit()
 
