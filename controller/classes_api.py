@@ -4,7 +4,7 @@ from flask import request, Response
 from services import ClassService
 from utils.common import json_response
 from controller import api_blueprint as controller
-from utils.test import validClassObject, invalidObjectMessage
+from utils.validatepayload import validClassObject, invalidObjectMessage
 
 
 @controller.route('/class', methods=['GET'])
@@ -23,7 +23,7 @@ def create_class():
 
     if (validClassObject(request_data)):
         ClassService.create(request_data)
-        return Response('', 200, mimetype='application/json')
+        return Response(json.dumps(request_data), 200, mimetype='application/json')
     else:
         return Response(json.dumps(invalidObjectMessage))
 
@@ -34,7 +34,7 @@ def update_class(class_id):
 
     if (validClassObject(request_data)):
         ClassService.update(class_id, request_data)
-        return Response('', 200, mimetype='application/json')
+        return Response(json.dumps(request_data), 200, mimetype='application/json')
     else:
         return Response(json.dumps(invalidObjectMessage))
 
@@ -43,7 +43,7 @@ def update_class(class_id):
 def delete_class(class_id):
     if (ClassService.delete(class_id)):
         ClassService.delete(class_id)
-        return Response('deleted', 200, mimetype='application/json')
+        return Response('', 200, mimetype='application/json')
     else:
-        return Response('Unable to perform delete operation', 401, mimetype='application/json')
+        return Response('Unable to perform delete operation', 406, mimetype='application/json')
 
