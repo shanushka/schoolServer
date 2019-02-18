@@ -14,3 +14,4 @@ class BaseService:
     @classmethod
     def delete(cls,id):
         return cls.model.delete(id)
+

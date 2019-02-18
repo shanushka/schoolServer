@@ -19,12 +19,11 @@ def createApp():
 
     app.json_encoder = CustomJSONEncoder
     app.register_blueprint(api_blueprint,url_prefix='/api')
-
     db.init_app(app)
+
     @app.route("/")
     def main():
         return "School Records"
-
     return app
 
 

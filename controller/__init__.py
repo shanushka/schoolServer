@@ -7,5 +7,5 @@ from controller import (
     role_api,
     students_api,
     classes_api,
-    subjects_api
-)
+    subjects_api,
+    auth_api)
